@@ -8,7 +8,7 @@ metadata:
     fluxcd.io/ignore: "false"
     fluxcd.io/automated: "true"
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: nginxhello
@@ -27,15 +27,3 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
-        livenessProbe:
-          initialDelaySeconds: 2
-          periodSeconds: 2
-          httpGet:
-            port: 80
-            path: /healthz/live
-        readinessProbe:
-          initialDelaySeconds: 2
-          periodSeconds: 2
-          httpGet:
-            port: 80
-            path: /healthz/ready
